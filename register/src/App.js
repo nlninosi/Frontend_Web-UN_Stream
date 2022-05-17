@@ -1,7 +1,7 @@
 import { Login } from './components/login/index';
 import { Register } from './components/login/index';
 import React from "react";
-import './App.css';
+import './App.scss';
 
 class App extends React.Component {
   constructor(props) {
