@@ -4,10 +4,12 @@ export class Register extends React.Component{
         super(props);
     }
     render(){
-        return( <div className="ContenedorBase">
+        return( <div className="ContenedorBase" ref={this.props.containerRef}>
             <div className="header">
                 <div className="content">
-                    <div className="logo"></div>
+                    <div className="logo">
+
+                    </div>
                     <div className="info">
                         <div className="form">
                             <label htmlFor="email">Email</label>

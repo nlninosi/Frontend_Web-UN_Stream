@@ -6,10 +6,11 @@ export class Login extends React.Component{
     }
     render(){
         return (
-        <div className="ContenedorBase">
+        <div className="ContenedorBase" ref={this.props.containerRef}>
             <div className="header">
                 <div className="content">
                     <div className="logo">
+
                     </div>
                     <div className="info">
                         <div className="form">
