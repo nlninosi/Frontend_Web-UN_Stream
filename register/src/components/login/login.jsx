@@ -30,7 +30,7 @@ export class Login extends React.Component{
                             <label htmlFor="email">Email</label>
                             <input type="text" placeholder="email" value={this.state.email} onChange={this.handleEmailChange}/>
                             <label htmlFor="password">Contraseña</label>
-                            <input type="text" name="password" placeholder="password" value={this.state.password} onChange={this.handlePasswordChange}/>
+                            <input type="text" name="password" placeholder="contraseña" value={this.state.password} onChange={this.handlePasswordChange}/>
                         </div>
                     </form>
                     <div className="sub">

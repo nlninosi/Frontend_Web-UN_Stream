@@ -34,11 +34,11 @@ export class Register extends React.Component{
                         </div>
                         <div className="form">
                             <label htmlFor="username">Nombre de usuario</label>
-                            <input type="text" name="username" placeholder="username" value={this.state.username} onChange={this.handleUserNameChange}/>
+                            <input type="text" name="username" placeholder="nombre de usuario" value={this.state.username} onChange={this.handleUserNameChange}/>
                         </div>
                         <div className="form">
                             <label htmlFor="password">Contraseña</label>
-                            <input type="text" name="password" placeholder="password" value={this.state.password} onChange={this.handlePasswordChange}/>
+                            <input type="text" name="password" placeholder="contraseña" value={this.state.password} onChange={this.handlePasswordChange}/>
                         </div>
                     </div>
                     <div className="info">
