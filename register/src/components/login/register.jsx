@@ -1,4 +1,5 @@
 import React from "react";
+import whiteLogo from "../../whiteLogo.svg";
 export class Register extends React.Component{
     constructor(props){
         super(props);
@@ -25,7 +26,7 @@ export class Register extends React.Component{
             <div className="header">
                 <div className="content">
                     <div className="logo">
-
+                        <img src={whiteLogo} alt="a" />
                     </div>
                     <div className="info">
                         <div className="form">

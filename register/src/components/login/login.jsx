@@ -23,7 +23,7 @@ export class Login extends React.Component{
             <div className="header">
                 <div className="content">
                     <div className="logo">
-
+                        <img src={whiteLogo} alt="a" />
                     </div>
                     <form className="info">
                         <div className="form">
