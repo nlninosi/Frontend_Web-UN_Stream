@@ -1,25 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import whiteLogo from "../../whiteLogo.svg";
-export class Login extends React.Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            email : "",
-            password : ""
-        };
-        this.handleEmailChange = this.handleEmailChange.bind(this);
-        this.handlePasswordChange = this.handlePasswordChange.bind(this);
-        //this.handleSubmit = this.handleSubmit.bind(this);
+import { VALIDATE_USER } from "../../graphql/validateuser.js"
+import "./style.scss";
+import { gql, useMutation } from "@apollo/client";
+
+export const Login = ()=>{
+    const [email,setEmail] = useState('')
+    const [password,setPassword] = useState('')
+    const [validateUser] = useMutation(VALIDATE_USER)
+    const handleSubmit = e =>{
+        validateUser({variables:{ email , password}})
     }
-    handleEmailChange(event) {
-        this.setState({email: event.target.value});
-    }
-    handlePasswordChange(event) {
-        this.setState({password: event.target.value});
-    }
-    render(){
-        return ( 
-        <div className="ContenedorBase" ref={this.props.containerRef}>
+    return( <div className="ContenedorBase">
             <div className="header">
                 <div className="content">
                     <div className="logo">
@@ -28,16 +20,15 @@ export class Login extends React.Component{
                     <form className="info">
                         <div className="form">
                             <label htmlFor="email">Email</label>
-                            <input type="text" placeholder="email" value={this.state.email} onChange={this.handleEmailChange}/>
-                            <label htmlFor="password">Contraseña</label>
-                            <input type="text" name="password" placeholder="contraseña" value={this.state.password} onChange={this.handlePasswordChange}/>
+                            <input type="text" name="email" placeholder="email" value={email} onChange={evt=> setEmail(evt.target.value)}/>
                         </div>
+                        <div className="form">
+                            <label htmlFor="password">Contraseña</label>
+                            <input type="text" name="password" placeholder="contraseña" value={password} onChange={evt=> setPassword(evt.target.value)}/>
+                        </div>
+                        <button type="button" className="submit" onClick={handleSubmit}>Registrarse</button>
                     </form>
-                    <div className="sub">
-                        <button type="button" className="submit">Iniciar Sesion</button>
-                    </div>
                 </div>
             </div>
         </div>);
-    }
 }

@@ -1,52 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import whiteLogo from "../../whiteLogo.svg";
-export class Register extends React.Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            email : "",
-            password : "",
-            username: ""
-        };
-        this.handleEmailChange = this.handleEmailChange.bind(this);
-        this.handlePasswordChange = this.handlePasswordChange.bind(this);
-        this.handleUserNameChange = this.handleUserNameChange.bind(this);
+import { POST_USER } from "../../graphql/createuser.js"
+import "./style.scss";
+import { gql, useMutation } from "@apollo/client";
+
+export const Register = ()=>{
+    const [email,setEmail] = useState('')
+    const [password,setPassword] = useState('')
+    const [username,setUserName] = useState('')
+    const status = "1"
+    const [createUser] = useMutation(POST_USER)
+    const handleSubmit = e =>{
+        createUser({variables:{ email , password, status, username}})
     }
-    handleEmailChange(event) {
-        this.setState({email: event.target.value});
-    }
-    handlePasswordChange(event) {
-        this.setState({password: event.target.value});
-    }
-    handleUserNameChange(event) {
-        this.setState({usermame: event.target.value});
-    }
-    render(){
-        return( <div className="ContenedorBase" ref={this.props.containerRef}>
+    return( <div className="ContenedorBase">
             <div className="header">
                 <div className="content">
                     <div className="logo">
                         <img src={whiteLogo} alt="a" />
                     </div>
-                    <div className="info">
+                    <form className="info">
                         <div className="form">
                             <label htmlFor="email">Email</label>
-                            <input type="text" name="email" placeholder="email" value={this.state.email} onChange={this.handleEmailChange}/>
+                            <input type="text" name="email" placeholder="email" value={email} onChange={evt=> setEmail(evt.target.value)}/>
                         </div>
                         <div className="form">
                             <label htmlFor="username">Nombre de usuario</label>
-                            <input type="text" name="username" placeholder="nombre de usuario" value={this.state.username} onChange={this.handleUserNameChange}/>
+                            <input type="text" name="username" placeholder="nombre de usuario" value={username} onChange={evt=> setUserName(evt.target.value)}/>
                         </div>
                         <div className="form">
                             <label htmlFor="password">Contraseña</label>
-                            <input type="text" name="password" placeholder="contraseña" value={this.state.password} onChange={this.handlePasswordChange}/>
+                            <input type="text" name="password" placeholder="contraseña" value={password} onChange={evt=> setPassword(evt.target.value)}/>
                         </div>
-                    </div>
-                    <div className="info">
-                        <button type="button" className="submit">Registrarse</button>
-                    </div>
+                        <button type="button" className="submit" onClick={handleSubmit}>Registrarse</button>
+                    </form>
                 </div>
             </div>
         </div>);
-    }
 }
