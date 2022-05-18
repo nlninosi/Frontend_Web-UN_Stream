@@ -11,6 +11,11 @@ function App() {
           <Register/>
         </div>
       </div>
+      <div className='login'>
+        <div className='container'>
+          <Login/>
+        </div>
+      </div>
     </div> 
   )
 }
