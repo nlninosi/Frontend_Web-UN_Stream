@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import whiteLogo from "../../whiteLogo.svg";
 import { VALIDATE_USER } from "../../graphql/validateuser.js"
 import "./style.scss";
@@ -7,7 +7,8 @@ import { gql, useMutation } from "@apollo/client";
 export const Login = ()=>{
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
-    const [validateUser] = useMutation(VALIDATE_USER)
+    const [validateUser,{ data, loading, error, reset }] = useMutation(VALIDATE_USER) 
+    useEffect(() => console.log(data), [data]);
     const handleSubmit = e =>{
         validateUser({variables:{ email , password}})
     }

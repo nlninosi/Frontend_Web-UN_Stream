@@ -1,10 +1,10 @@
 import { gql } from "@apollo/client";
 export const VALIDATE_USER = gql`
-mutation ValidateUser ($Email: String!,$Password: String!){ 
-    CreateUserRequest (
-        Email: $Email, 
-        Password: $Password
-        ){
-      token
-    } 
+mutation validarUser($email:String!,$password:String!){
+  ValidateUser(ValidateUserRequest: {
+    email: $email,
+    password: $password
+  }) {
+    token
+  }
 }`

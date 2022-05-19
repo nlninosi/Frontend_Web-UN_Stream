@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import whiteLogo from "../../whiteLogo.svg";
 import { POST_USER } from "../../graphql/createuser.js"
 import "./style.scss";
@@ -9,7 +9,8 @@ export const Register = ()=>{
     const [password,setPassword] = useState('')
     const [username,setUserName] = useState('')
     const status = "1"
-    const [createUser] = useMutation(POST_USER)
+    const [createUser,{ data, loading, error, reset }] = useMutation(POST_USER)
+    useEffect(() => console.log(data), [data]);
     const handleSubmit = e =>{
         createUser({variables:{ email , password, status, username}})
     }
